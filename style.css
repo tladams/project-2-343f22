@@ -1,0 +1,122 @@
+div {
+    margin: 5px;
+}
+
+ul {
+    font-size: 10px;
+}
+
+.define {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.translate {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.define-text {
+    margin: 5px;
+    font-size: 30px;
+    width: 700px;
+    height: 100%;
+    align-items: flex-start;
+}
+
+.long-def-text {
+    margin: 5px;
+    font-size: 25px;
+    width: 700px;
+    height: 100%;
+    align-items: flex-start;
+}
+
+.translate-text {
+    margin: 5px;
+    font-size: 30px;
+    width: 700px;
+    height: 50%;
+    align-items: flex-start;
+}
+
+.query-text {
+    margin: 5px;
+    font-size: 35px;
+    width: 700px;
+    height: 50%;
+    align-items: flex-start;
+}
+
+.search-box {
+    width:250px;
+    height:30px;
+    font-size: 25px;
+    border-width: 5px;
+    border-left-color: rgb(21, 243, 198);
+    border-top-color: rgb(190, 100, 249);
+    border-right-color: rgb(21, 243, 198);
+    border-bottom-color: rgb(190, 100, 249);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.search {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .define {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .translate {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .query-text {
+        margin: 10px;
+        font-size: 20px;
+        width: 235px;
+        height: 50%;
+        align-items: flex-start;
+        font-weight:900;
+    }
+
+    .define-text {
+        margin: 10px;
+        font-size: 20px;
+        width: 235px;
+        height: 50%;
+        align-items: flex-start;
+        font-weight:900;
+    }
+
+    .translate-text {
+        margin: 5px;
+        font-size: 20px;
+        width: 235px;
+        height: 50%;
+        align-items: flex-start;
+        font-weight:900;
+    }
+    .long-def-text {
+        margin: 5px;
+        font-size: 20px;
+        width: 250px;
+        height: 100%;
+        align-items: flex-start;
+        font-weight:900;
+    }
+}

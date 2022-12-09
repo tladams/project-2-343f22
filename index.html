@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Define and Translate!📚🇲🇽🇫🇷</title>
+    <title>Define and Translate!📚🇲🇽</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="vestigial">
-        <input type="text" name="" id="query" value="">
-      </form>
-      <div id="results"></div>
-      <script src="defineTranslate.js"></script>
+    <div class="search">
+        <p style="font-size:30px;">
+            <em><strong>search any word:</strong></em>
+        </p>
+        <form id="vestigial">
+            <input type="text" name="" id="query" value="" class="search-box">
+        </form>
+    </div>
+    <div class="define">
+        <p class="define-text"><strong></strong></p>
+        <p class="define-text"><em></em></p>
+        <!--<ul class="define-text"><li></li></ul>-->
+    </div>
+    <div class="translate">
+        <p class="translate-text"><em></em></p>
+        <!--<ul class="translate-text"><li></li></ul>-->
+    </div>
+    <script src="defineTranslate.js"></script>
 </body>
 </html>
