@@ -6,6 +6,16 @@ ul {
     font-size: 10px;
 }
 
+.define:hover{
+    background-color: rgb(210, 149, 254);
+}
+.translate:hover{
+    background-color: rgb(210, 149, 254);
+}
+.part-of-speech:hover{
+    background-color: rgb(210, 149, 254);
+}
+
 .show {
     display: auto;
   }
