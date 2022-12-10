@@ -173,54 +173,32 @@ async function searchForTran(query) {
 
 // creating translation elements
 function createTrPageElements(tResults) {
-    console.log("tResults");
+    console.log("tResults"); 
     console.log(tResults);
     let tElem = document.createElement("div");
     tElem.classList.add("translate");
-    let traP = document.createElement("p");
-    traP.classList.add("translate-text");
+    let trP = document.createElement("p");
+    trP.classList.add("translate-text");
     let em = document.createElement("em");
-    em.append("spanish translation(s):");
-    traP.append(em);
-    tElem.append(traP);
-    let ulElem = document.createElement("ul");
-    ulElem.classList.add("translate-text");
-    traResultsJson.forEach((tjson) => {
-        console.log("tjson");
-        console.log(tjson);
-        if (tjson.shortdef.length > 1) {
-            for (let i = 0; i < 2; i++) {
-                let liElem = document.createElement("li");
-                if(tjson.shortdef[i].includes(':')) {
-                    console.log(tjson.shortdef[i]);
-                    console.log("includes :");
-                    let c_i = tjson.shortdef[i].indexOf(':');
-                    let e_w = tjson.shortdef[i].substring(0, c_i - 1);
-                    let s_tr = tjson.shortdef[i].substring(c_i + 1, tjson.shortdef[i].length);
-                    console.log(c_i);
-                    console.log(e_w);
-                    console.log(s_tr);
-                    liElem.append(s_tr);
-                    liElem.append(" (");
-                    liElem.append(e_w);
-                    liElem.append(")");
-                    ulElem.append(liElem);
-                } else {
-                    console.log("no");
-                    console.log(tjson.shortdef[i].toLowerCase());
-                    liElem.append(tjson.shortdef[i].toLowerCase());
-                    ulElem.append(liElem);
-                }
-            }
-        } else {
-            console.log("tjson");
-            console.log(tjson);
+    em.append("spanish translation(s): ");
+    trP.append(em);
+    tElem.append(trP);
+    let ul = document.createElement("ul");
+    ul.classList.add("translate-text");
+    if (tResults.length > 1) {
+        tResults.forEach((t_res) => {
+            console.log("t_res");
+            console.log(t_res);
             let li = document.createElement("li");
-            li.append(tjson.shortdef);
-            ulElem.append(li);
-        }
-    })
-    tElem.append(ulElem);
+            li.append(t_res);
+            ul.append(li);
+        })
+    } else {
+        let li = document.createElement("li");
+        li.append(tResults[0]);
+        ul.append(li);
+    }
+    tElem.append(ul);
     tElem = styledPageElem(tElem);
     return tElem;
 }
