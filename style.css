@@ -6,14 +6,54 @@ ul {
     font-size: 10px;
 }
 
+.show {
+    display: auto;
+  }
+
+.btn {
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background-color: rgb(191, 110, 249);
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    /*font-size: 15px;*/
+    /*font-weight: bolder;*/
+    /*justify-content: center;*/
+}
+
+.btn:hover{
+    background-color: aquamarine;
+}
+
+.btn.active {
+    background-color: #666;
+    color: white;
+  }
+
 .define {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    /*display: none;*/
+}
+
+.container {
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+.translate {
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
 }
 
-.translate {
+.part-of-speech {
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -28,19 +68,19 @@ ul {
     align-items: flex-start;
 }
 
-.long-def-text {
-    margin: 5px;
-    font-size: 25px;
-    width: 700px;
-    height: 100%;
-    align-items: flex-start;
-}
-
 .translate-text {
     margin: 5px;
     font-size: 30px;
     width: 700px;
     height: 50%;
+    align-items: flex-start;
+}
+
+.part-of-speech-text {
+    margin: 5px;
+    font-size: 30px;
+    width: 700px;
+    height: 100%;
     align-items: flex-start;
 }
 
@@ -56,10 +96,11 @@ ul {
     width:250px;
     height:30px;
     font-size: 25px;
-    border-width: 5px;
-    border-left-color: rgb(21, 243, 198);
+    border: solid; 
+    border-width: 3.5px;
+    border-left-color:  rgb(190, 100, 249);
     border-top-color: rgb(190, 100, 249);
-    border-right-color: rgb(21, 243, 198);
+    border-right-color:  rgb(190, 100, 249);
     border-bottom-color: rgb(190, 100, 249);
     font-family: 'Times New Roman', Times, serif;
 }
@@ -80,6 +121,12 @@ ul {
         align-items: center;
     }
     .translate {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+    }
+    .part-of-speech {
         display: flex;
         flex-direction: column;
         justify-content:center;
@@ -111,7 +158,8 @@ ul {
         align-items: flex-start;
         font-weight:900;
     }
-    .long-def-text {
+
+    .part-of-speech-text {
         margin: 5px;
         font-size: 20px;
         width: 250px;
