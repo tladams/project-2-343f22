@@ -41,7 +41,7 @@ async function whenSomeKeyPressed(event) {
     }
 }
 
-//filterDivs("all");
+filterDivs("all");
 function filterDivs(c) {
     var x, i;
     x = document.querySelectorAll(".info");
