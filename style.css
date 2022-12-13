@@ -38,12 +38,27 @@ ul {
 }
 
 .btn.active {
-    background-color: #666;
-    color: white;
+    background-color: rgb(253, 233, 233);
+    color: rgb(0, 0, 0);
   }
 
+.query {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.query-text {
+    margin: 5px;
+    font-size: 30px;
+    width: 700px;
+    height: 50%;
+    align-items: flex-start;
+    /*display: none;*/
+}
+
 .define {
-    margin: 15px;
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -51,8 +66,14 @@ ul {
     /*display: none;*/
 }
 
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
 .container {
-    margin-top: 20px;
     overflow: hidden;
   }
 
@@ -116,6 +137,7 @@ ul {
 }
 
 .search {
+    margin: 30px;
     height: 150px;
     display: flex;
     flex-direction: column;

@@ -17,23 +17,27 @@
             <input type="text" name="" id="query" value="" class="search-box">
         </form>
         <div id="buttons">
-            <button class="show btn active" onclick="filterDivs('all')">show all</button>
-            <button class="btn" onclick="filterDivs('define')">definitions</button>
-            <button class="btn" onclick="filterDivs('part-of-speech')">parts of speech</button>
-            <button class="btn" onclick="filterDivs('translate')">translation</button>
+            <button class="btn active" onclick="filterElements('all')">show all</button>
+            <button class="btn" onclick="filterElements('define')">definitions</button>
+            <button class="btn" onclick="filterElements('part-of-speech')">parts of speech</button>
+            <button class="btn" onclick="filterElements('translate')">translations</button>
         </div>
     </div>
     <main>
-        <div class="info define">   
-            <p class="query-text"><em></em></p>             
-            <!--<ul class="define-text"><li></li></ul>-->
-        </div>
-        <div class="info part-of-speech">
-               <p class="part-of-speech-text"></p>
-        </div>
-        <div class="info translate">
-            <p class="translate-text"><em></em></p>
-            <!--<ul class="translate-text"><li></li></ul>-->
+        <div class="elements">
+            <div class="query">
+                <p class="query-text"><em></em></p>
+            </div>
+            <div class="info define">                
+                <!--<ul class="define-text"><li></li></ul>-->
+            </div>
+            <div class="info part-of-speech">
+                   <p class="part-of-speech-text"></p>
+            </div>
+            <div class="info translate">
+                <p class="translate-text"><em></em></p>
+                <!--<ul class="translate-text"><li></li></ul>-->
+            </div>
         </div>
         <script src="defineTranslate.js"></script>
     </main>

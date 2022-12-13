@@ -2,6 +2,7 @@
 
 // global values to help with html
 const searchBoxElem = document.getElementById("query");
+const qContainer = document.querySelector(".query-text");
 const defContainer = document.querySelector(".define");
 const posContainer = document.querySelector(".part-of-speech");
 const trContainer = document.querySelector(".translate");
@@ -23,7 +24,10 @@ async function whenSomeKeyPressed(event) {
       //defs.forEach((def) => {
         //console.log(def);
       //});
-      const defPageElem = createDefPageElements(searchBoxElem.value, defs);
+      const qPageElem = createQuery(searchBoxElem.value);
+      console.log("queryPageElem");
+      console.log(qPageElem);
+      const defPageElem = createDefPageElements(defs);
       console.log("defPageElements");
       console.log(defPageElem);
       const posPageElem = createPartOfSpeech();
@@ -36,15 +40,18 @@ async function whenSomeKeyPressed(event) {
       //console.log("translation");
       //console.log(trPageElem);
       clearPageElem();
-      populatePage(defPageElem, posPageElem, trPageElem);
+      populatePageQuery(qPageElem);
+      populatePageDef(defPageElem);
+      populatePagePos(posPageElem);
+      populatePageTran(trPageElem);
       searchBoxElem.value = '';
     }
 }
 
-filterDivs("all");
-function filterDivs(c) {
+filterElements("all");
+function filterElements(c) {
     var x, i;
-    x = document.querySelectorAll(".info");
+    x = document.getElementsByClassName(".info");
     if(c == "all") c = "";
     for(i = 0; i < x.length; i++){
         removeClass(x[i], "show");
@@ -78,14 +85,29 @@ function removeClass(element, name) {
 }
 
 // Add active class to the current button (highlight it)
-var btnContainer = document.querySelector(".buttons");
-var btns = btnContainer.getElementsByTagName("button");
+var btnContainer = document.getElementById("buttons");
+var btns = btnContainer.getElementsByClassName("btn");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function(){
+    //clearPageElem();
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
+}
+
+// creating query text on page
+function createQuery(query) {
+    let qElem = document.createElement("div");
+    qElem.classList.add("query");
+    let queryP = document.createElement("p");
+    queryP.classList.add("query-text");
+    let bold = document.createElement("strong");
+    bold.append(query);
+    queryP.append(bold);
+    qElem.append(queryP);
+    qElem = styledPageElem(qElem);
+    return qElem;
 }
 
 // searching for query definition using merriam-webster dictionary api
@@ -96,7 +118,7 @@ async function searchForDef(query) {
     defResultsJson = await defResults.json();
     console.log("defResultsJson");
     console.log(defResultsJson);
-    const defResultsArray = new Array();
+    let defResultsArray = new Array();
     console.log("define results array");
     console.log(defResultsArray);
     if (defResultsJson.length > 1) {
@@ -122,20 +144,14 @@ async function searchForDef(query) {
 }
 
 // creating definition elements
-function createDefPageElements(query, defResults) {
+function createDefPageElements(defResults) {
     let dElem = document.createElement("div");
     dElem.classList.add("define");
-    let queryP = document.createElement("p");
-    queryP.classList.add("query-text");
-    let bold = document.createElement("strong");
-    bold.append(query);
-    queryP.append(bold);
     let defP = document.createElement("p");
     defP.classList.add("define-text");
     let em = document.createElement("em");
     em.append("definition(s):");
     defP.append(em);
-    dElem.append(queryP);
     dElem.append(defP);
     let ulElem = document.createElement("ul");
     ulElem.classList.add("define-text");
@@ -237,8 +253,24 @@ function createTrPageElements(tResults) {
             console.log("t_res");
             console.log(t_res);
             let li = document.createElement("li");
-            li.append(t_res);
-            ul.append(li);
+            if(t_res.includes(':')) {
+                console.log(t_res);
+                console.log("includes :");
+                let c_i = t_res.indexOf(':');
+                let e_w = t_res.substring(0, c_i - 1);
+                let s_tr = t_res.substring(c_i + 1, t_res.length);
+                console.log(c_i);
+                console.log(e_w);
+                console.log(s_tr);
+                li.append(s_tr);
+                li.append(" (");
+                li.append(e_w);
+                li.append(")");
+                ul.append(li);
+            } else {
+                li.append(t_res.toLowerCase());
+                ul.append(li);
+            }
         })
     } else {
         let li = document.createElement("li");
@@ -260,6 +292,9 @@ function styledPageElem(defElem) {
 
 // clearing elements for new search
 function clearPageElem() {
+    Array.from(qContainer.childNodes).forEach((child) => {
+        child.remove();
+      });
     Array.from(defContainer.childNodes).forEach((child) => {
       child.remove();
     });
@@ -271,9 +306,22 @@ function clearPageElem() {
     });
 }
 
-// populating the page w the elements
-function populatePage(dElem, posElem, tElem) {
+// populating the page w the query elements
+function populatePageQuery(queryElem) {
+    qContainer.append(queryElem);
+}
+
+// populating the page w the definition elements
+function populatePageDef(dElem) {
     defContainer.append(dElem);
+}
+
+// populating the page w the parts of speech elements
+function populatePagePos(posElem) {
     posContainer.append(posElem);
+}
+
+// populating the page w the translation elements
+function populatePageTran(tElem) {
     trContainer.append(tElem);
 }
